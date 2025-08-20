@@ -1,0 +1,8 @@
+<div class: "flash-messages-container", data: {controller: "flash"}>
+	<% if notice %>
+		<%= render "shared/flash/success" %>
+	<% end %>
+	<% if alert %>
+		<%= render "/flash/danger" %>
+	<% end %>
+</div>

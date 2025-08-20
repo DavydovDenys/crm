@@ -1,0 +1,87 @@
+<div class='container mt-4'>
+  <%= form_with model: @item do |form| %>
+    <div class="row mb-3"> <%# Оборачиваем все поля в .row %>
+      <div class="col-md-3"> <%# col-md-2 для item_code (занимает 2 из 12 колонок) %>
+        <div class="mb-3"> <%# Добавляем mb-3 внутри колонки для отступа снизу %>
+          <%= form.label :item_code, class: 'form-label' %>
+          <%= form.text_field :lot_code, class: 'form-control' %>
+          <% if @item.errors[:lot_code].any? %>
+            <div class="invalid-feedback d-block"> <%# d-block для отображения %>
+              <%= @item.errors.full_messages_for(:lot_code).first %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-md-4"> <%# col-md-4 для name (занимает 4 из 12 колонок) - это будет ваше "длинное" поле %>
+        <div class="mb-3">
+          <%= form.label :name, class: 'form-label' %>
+          <%= form.text_field :name, class: 'form-control', required: true, minlength: 3 %>
+          <% if @item.errors[:name].any? %>
+            <div class="invalid-feedback d-block"> <%# d-block для отображения %>
+              <%= @item.errors.full_messages_for(:name).join(', ') %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-md-2"> <%# col-md-2 для weight %>
+        <div class="mb-3">
+          <%= form.label :weight, class: 'form-label' %>
+          <%= form.number_field :weight, class: 'form-control', required: true %>
+          <% if @item.errors[:weight].any? %>
+            <div class="invalid-feedback d-block"> <%# d-block для отображения %>
+              <%= @item.errors.full_messages_for(:weight).join(', ') %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-md-3"> <%# col-md-2 для price %>
+        <div class="mb-3">
+          <%= form.label :price, class: 'form-label' %>
+          <%= form.text_field :price, class: 'form-control', required: true %>
+          <% if @item.errors[:price].any? %>
+            <div class="invalid-feedback d-block"> <%# d-block для отображения %>
+              <%= @item.errors.full_messages_for(:price).join(', ') %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-md-3"> <%# col-md-2 для service_fee %>
+        <div class="mb-3">
+          <%= form.label :service_fee, class: 'form-label' %>
+          <%= form.text_field :service_fee, class: 'form-control' %>
+          <% if @item.errors[:service_fee].any? %>
+            <div class="invalid-feedback d-block"> <%# d-block для отображения %>
+              <%= @item.errors.full_messages_for(:service_fee).join(', ') %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-md-3"> <%# col-md-3 для delivery_in_Japan (если хотите его тоже чуть длиннее) %>
+        <div class="mb-3">
+          <%= form.label :internal_shipping_costs, class: 'form-label' %>
+          <%= form.text_field :internal_shipping_costs, class: 'form-control' %>
+          <% if @item.errors[:internal_shipping_costs].any? %>
+            <div class="invalid-feedback d-block"> <%# d-block для отображения %>
+              <%= @item.errors.full_messages_for(:internal_shipping_costs).join(', ') %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-md-3"> <%# col-md-2 для country_fee %>
+        <div class="mb-3">
+          <%= form.label :country_fee, class: 'form-label' %>
+          <%= form.text_field :country_fee, class: 'form-control' %>
+          <% if @item.errors[:country_fee].any? %>
+            <div class="invalid-feedback d-block"> <%# d-block для отображения %>
+              <%= @item.errors.full_messages_for(:country_fee).join(', ') %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div> <%# Конец .row %>
+
+    <div class="mb-3">
+      <%= form.submit 'Сохранить', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>
